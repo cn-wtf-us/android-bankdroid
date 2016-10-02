@@ -27,6 +27,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
+
 import static com.liato.bankdroid.db.Database.*;
 
 /**
@@ -155,6 +157,9 @@ final public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void migrateBanks(SQLiteDatabase db) {
+        // TODO migrate lastUpdated to use timestamp
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         db.execSQL(Database.TABLE_CONNECTION);
         Cursor c = db.query(LegacyDatabase.BANK_TABLE_NAME, null, null, null,null,null,null);
         if (!(c == null || c.isClosed() || (c.isBeforeFirst() && c.isAfterLast()))) {
