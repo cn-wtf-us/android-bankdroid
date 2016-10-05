@@ -285,7 +285,7 @@ public class AutoRefreshService extends Service {
 
         @NonNull
         protected DBAdapter getDBAdapter() {
-            return DBAdapter.create(AutoRefreshService.this);
+            return DBAdapter.create(autoRefreshService);
         }
 
         protected void sendWidgetRefresh() {
